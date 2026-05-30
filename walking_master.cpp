@@ -1,44 +1,37 @@
-#include<iostream>
-#include<string>
-#include<algorithm>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int main() {
+int main(){
     int t;
     cin >> t;
 
     while(t--){
-        int n;
-        cin >> n;
 
-        int a,b,c,d;
-        cin >> a >> b >> c >> d;
+        int source_x , source_y, dest_x, dest_y;
+        cin >> source_x >> source_y >> dest_x >> dest_y;
 
-        int count = 0;
-
-        while(a <= c || b <= d){
-            if(a != c && b != d){
-                a++;
-                b++;
-                count++;
-            }
-            else if(a != c && b == d){
-                a--;
-                count++;
-            }
-
-            }
-            
-            if((a == c) && (b == d)){
-              cout << count << endl;
-            }
-            else {
-                cout << -1 << endl;
-            }
-            
+        if(dest_y < source_y){
+            cout << -1 << endl;
+            continue;
         }
-        return 0;
-    }
 
+        int moves = 0;
+        moves += ( dest_y - source_y);
+        source_x += moves;
+
+        if(source_x < dest_x){
+            cout << -1 << endl;
+         continue;
+        }
+        else{
+            moves += (  source_x - dest_x);
+
+            cout << moves << endl;
+        }
+
+         
+    }
+    return 0;
+}
